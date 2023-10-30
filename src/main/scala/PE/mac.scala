@@ -10,6 +10,9 @@ class macUnit extends Module {
         val in_a  = Input(UInt(8.W))
         val in_b  = Input(UInt(8.W))
         val in_c  = Input(UInt(16.W))
+
+        val out_a = Output(UInt(8.W))
+        val out_b = Output(UInt(8.W))
         val out_c = Output(UInt(16.W))
     })
     val mul   = Module(new Multiplier())
@@ -24,5 +27,8 @@ class macUnit extends Module {
     rca.input.c_in                         := 0.U(16.W)
     
     c_reg    := Mux(io.done === true.B, io.in_c, rca.output.S)
+    
+    io.out_a := io.in_a
+    io.out_b := io.in_b
     io.out_c := c_reg
 }
