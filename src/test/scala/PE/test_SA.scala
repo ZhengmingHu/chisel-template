@@ -1,6 +1,5 @@
 package PE
 
-package PE
 
 import chisel3._
 import chiseltest._
