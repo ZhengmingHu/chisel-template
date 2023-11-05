@@ -11,14 +11,25 @@ class topTest extends AnyFlatSpec with ChiselScalatestTester {
     "top" should "pass" in {
         test(new top)
             .withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+            dut.io.in_start.poke(1.U)
+            dut.io.in_start.poke(1.U)
+            dut.io.in_a(0).poke(0.U)
+            dut.io.in_a(1).poke(0.U)
+            dut.io.in_b(0).poke(0.U)
+            dut.io.in_b(1).poke(0.U)
+            dut.io.in_c(0).poke(0.U)
+            dut.io.in_c(1).poke(0.U)
+
+            dut.clock.step()
+            
+            dut.io.in_start.poke(0.U)
+            dut.io.in_start.poke(0.U)
             dut.io.in_a(0).poke(1.U)
             dut.io.in_a(1).poke(0.U)
             dut.io.in_b(0).poke(5.U)
             dut.io.in_b(1).poke(0.U)
             dut.io.in_c(0).poke(0.U)
             dut.io.in_c(1).poke(0.U)
-            dut.io.in_control(0).done.poke(0.U)
-            dut.io.in_control(1).done.poke(0.U)
 
             dut.clock.step()
             
@@ -28,8 +39,6 @@ class topTest extends AnyFlatSpec with ChiselScalatestTester {
             dut.io.in_b(1).poke(6.U)
             dut.io.in_c(0).poke(0.U)
             dut.io.in_c(1).poke(0.U)
-            dut.io.in_control(0).done.poke(0.U)
-            dut.io.in_control(1).done.poke(0.U)
 
             dut.clock.step()
 
@@ -39,8 +48,6 @@ class topTest extends AnyFlatSpec with ChiselScalatestTester {
             dut.io.in_b(1).poke(8.U)
             dut.io.in_c(0).poke(0.U)
             dut.io.in_c(1).poke(0.U)
-            dut.io.in_control(0).done.poke(0.U)
-            dut.io.in_control(1).done.poke(0.U)
 
             dut.clock.step()
 
@@ -50,8 +57,6 @@ class topTest extends AnyFlatSpec with ChiselScalatestTester {
             dut.io.in_b(1).poke(0.U)
             dut.io.in_c(0).poke(0.U)
             dut.io.in_c(1).poke(0.U)
-            dut.io.in_control(0).done.poke(0.U)
-            dut.io.in_control(1).done.poke(0.U)
 
             
 

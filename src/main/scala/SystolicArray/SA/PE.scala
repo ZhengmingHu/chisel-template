@@ -8,7 +8,7 @@ import MUL._
 
 
 class PEControl extends Bundle {
-  val done = Bool()
+  val done  = Bool()
 }
 
 class PE(val IN_WIDTH: Int, val C_WIDTH: Int) extends Module {

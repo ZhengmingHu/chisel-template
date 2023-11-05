@@ -45,7 +45,6 @@ class SA(val IN_WIDTH: Int, val C_WIDTH: Int, val SA_ROWS: Int, val SA_COLS: Int
     }
   }
 
-
   for (c <- 0 until SA_COLS) {
     sa_t(c).foldLeft(io.in_control(c)) {
       case (in_ctrl, pe) =>
